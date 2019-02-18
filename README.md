@@ -1,0 +1,2 @@
+# leetcode
+start AC leetcode
