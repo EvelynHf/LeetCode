@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dfbbe08-91f9-462c-b85a-ada1cced830d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/Test.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +30,8 @@
       <file leaf-file-name="SortArrayByParityII.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sort/SortArrayByParityII.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="54" selection-end-column="22" />
+            <state relative-caret-position="140">
+              <caret line="22" column="32" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -375,12 +375,12 @@
       <option name="presentableId" value="Default" />
       <updated>1550495232541</updated>
       <workItem from="1550495234488" duration="630000" />
-      <workItem from="1569332186725" duration="2744000" />
+      <workItem from="1569332186725" duration="3017000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3374000" />
+    <option name="totallyTimeSpent" value="3647000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-296" y="-1080" width="1920" height="1080" extended-state="0" />
@@ -488,8 +488,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sort/SortArrayByParityII.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="54" selection-end-column="22" />
+        <state relative-caret-position="140">
+          <caret line="22" column="32" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="32" />
           <folding />
         </state>
       </provider>
