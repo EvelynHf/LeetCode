@@ -23,7 +23,7 @@ import java.util.Arrays;
 public class SortArrayByParityII {
 
     public static void main(String[] args) {
-        int[] A = new int[]{2, 3, 3, 4};
+        int[] A = {2, 3, 3, 4};
         int[] result = new Solution().sortArrayByParityII(A);
         System.out.print(Arrays.toString(result));
     }
@@ -46,7 +46,7 @@ public class SortArrayByParityII {
                 } else {
                     // even
                     result[evenPoint] = value;
-                    evenPoint +=2;
+                    evenPoint += 2;
                 }
             }
 
