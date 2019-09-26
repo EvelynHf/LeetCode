@@ -1,5 +1,7 @@
 package sort;
 
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.util.Arrays;
 
 /**
@@ -24,8 +26,36 @@ public class SortArrayByParityII {
 
     public static void main(String[] args) {
         int[] A = {2, 3, 3, 4};
-        int[] result = new Solution().sortArrayByParityII(A);
+        int[] result = new Solution2().sortArrayByParityII(A);
         System.out.print(Arrays.toString(result));
+    }
+
+    private static class Solution2 {
+        public int[] sortArrayByParityII(int[] A) {
+            int i = 0;
+            int j = 1;
+            int n = A.length;
+            while (i < n && j < n) {
+                while (i < n && A[i] % 2 == 0) {
+                    i += 2;
+                }
+                while (j < n && A[j] % 2 == 1) {
+                    j += 2;
+                }
+
+                if (i < n && j < n) {
+                    this.swap(A, i, j);
+                }
+            }
+
+            return A;
+        }
+
+        private void swap(int[] arr, int i, int j) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
     }
 
     private static class Solution {
