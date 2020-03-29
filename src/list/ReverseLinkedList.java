@@ -8,7 +8,7 @@ package list;
  * Input: 1->2->3->4->5->NULL
  * Output: 5->4->3->2->1->NULL
  *
- * @author huangfen@baidu.com
+ * @author EvelynHf
  * @create 2020-03-29 22:12
  **/
 public class ReverseLinkedList {
