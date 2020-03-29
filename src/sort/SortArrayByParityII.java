@@ -26,62 +26,58 @@ public class SortArrayByParityII {
 
     public static void main(String[] args) {
         int[] A = {2, 3, 3, 4};
-        int[] result = new Solution2().sortArrayByParityII(A);
+        int[] result = new SortArrayByParityII().sortArrayByParityII1(A);
         System.out.print(Arrays.toString(result));
     }
 
-    private static class Solution2 {
-        public int[] sortArrayByParityII(int[] A) {
-            int i = 0;
-            int j = 1;
-            int n = A.length;
-            while (i < n && j < n) {
-                while (i < n && A[i] % 2 == 0) {
-                    i += 2;
-                }
-                while (j < n && A[j] % 2 == 1) {
-                    j += 2;
-                }
-
-                if (i < n && j < n) {
-                    this.swap(A, i, j);
-                }
+    public int[] sortArrayByParityII1(int[] A) {
+        int i = 0;
+        int j = 1;
+        int n = A.length;
+        while (i < n && j < n) {
+            while (i < n && A[i] % 2 == 0) {
+                i += 2;
+            }
+            while (j < n && A[j] % 2 == 1) {
+                j += 2;
             }
 
-            return A;
+            if (i < n && j < n) {
+                this.swap(A, i, j);
+            }
         }
 
-        private void swap(int[] arr, int i, int j) {
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
+        return A;
     }
 
-    private static class Solution {
-        public int[] sortArrayByParityII(int[] A) {
-            int[] result = new int[A.length];
-            if (null == A || 0 == A.length) {
-                return result;
-            }
-            int oddPoint = 0;
-            int evenPoint = 1;
-            int length = A.length;
-            for (int i = 0; i < length; i++) {
-                int value = A[i];
-                if (0 == value % 2) {
-                    // odd
-                    result[oddPoint] = value;
-                    oddPoint += 2;
-                } else {
-                    // even
-                    result[evenPoint] = value;
-                    evenPoint += 2;
-                }
-            }
+    private void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
 
+    public int[] sortArrayByParityII2(int[] A) {
+        int[] result = new int[A.length];
+        if (null == A || 0 == A.length) {
             return result;
         }
+        int oddPoint = 0;
+        int evenPoint = 1;
+        int length = A.length;
+        for (int i = 0; i < length; i++) {
+            int value = A[i];
+            if (0 == value % 2) {
+                // odd
+                result[oddPoint] = value;
+                oddPoint += 2;
+            } else {
+                // even
+                result[evenPoint] = value;
+                evenPoint += 2;
+            }
+        }
+
+        return result;
     }
 }
 

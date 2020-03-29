@@ -24,7 +24,7 @@ public class ReverseLinkedList {
         }
 
         // reverse list
-        ListNode newHead = new Solution1().reverseList(head);
+        ListNode newHead = new ReverseLinkedList().reverseList1(head);
 
         // print list
         temp = newHead;
@@ -34,45 +34,32 @@ public class ReverseLinkedList {
         }
     }
 
-    private static class Solution2 {
-        public ListNode reverseList(ListNode head) {
+    public ListNode reverseList1(ListNode head) {
 
-            if (null == head || null == head.next) {
-                return head;
-            }
-            ListNode pre = null;
-            ListNode cur = head;
-            while (null != cur) {
-                ListNode temp = cur.next;
-                cur.next = pre;
-                pre = cur;
-                cur = temp;
-            }
-            return pre;
+        if (null == head || null == head.next) {
+            return head;
         }
+        ListNode pre = null;
+        ListNode cur = head;
+        while (null != cur) {
+            ListNode temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
     }
 
-    private static class Solution1 {
-        public ListNode reverseList(ListNode head) {
-            return swapNewHead(head, null);
-        }
-
-        private ListNode swapNewHead(ListNode head, ListNode newHead) {
-            if (null == head) {
-                return newHead;
-            }
-            ListNode next = head.next;
-            head.next = newHead;
-            return swapNewHead(next, head);
-        }
+    public ListNode reverseList2(ListNode head) {
+        return swapNewHead(head, null);
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
+    private ListNode swapNewHead(ListNode head, ListNode newHead) {
+        if (null == head) {
+            return newHead;
         }
+        ListNode next = head.next;
+        head.next = newHead;
+        return swapNewHead(next, head);
     }
 }

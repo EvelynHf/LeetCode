@@ -54,99 +54,92 @@ public class MatrixCellsInDistanceOrder {
         int r0 = 1;
         int c0 = 2;
 
-        int[][] result = new Solution3().allCellsDistOrder(R, C, r0, c0);
+        int[][] result = new MatrixCellsInDistanceOrder().allCellsDistOrder1(R, C, r0, c0);
         for (int[] cell : result) {
             System.out.println(Arrays.toString(cell));
         }
     }
 
-    private static class Solution3 {
-        public int[][] allCellsDistOrder(int R, int C, int r0, int c0) {
-            boolean[][] visited = new boolean[R][C];
-            int[][] result = new int[R * C][2];
-            Queue<int[]> queue = new LinkedList<>();
-            queue.offer(new int[]{r0, c0});
-            int i = 0;
-            while (!queue.isEmpty()) {
-                int[] cell = queue.poll();
-                int r = cell[0];
-                int c = cell[1];
-                if (r < 0 || r >= R || c < 0 || c >= C || visited[r][c]) {
-                    continue;
-                }
-                result[i++] = cell;
-                visited[r][c] = true;
-                queue.offer(new int[]{r, c - 1});
-                queue.offer(new int[]{r, c + 1});
-                queue.offer(new int[]{r + 1, c});
-                queue.offer(new int[]{r - 1, c});
+    public int[][] allCellsDistOrder1(int R, int C, int r0, int c0) {
+        boolean[][] visited = new boolean[R][C];
+        int[][] result = new int[R * C][2];
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{r0, c0});
+        int i = 0;
+        while (!queue.isEmpty()) {
+            int[] cell = queue.poll();
+            int r = cell[0];
+            int c = cell[1];
+            if (r < 0 || r >= R || c < 0 || c >= C || visited[r][c]) {
+                continue;
             }
-            return result;
+            result[i++] = cell;
+            visited[r][c] = true;
+            queue.offer(new int[]{r, c - 1});
+            queue.offer(new int[]{r, c + 1});
+            queue.offer(new int[]{r + 1, c});
+            queue.offer(new int[]{r - 1, c});
         }
+        return result;
     }
 
-    private static class Solution2 {
-        public int[][] allCellsDistOrder(int R, int C, int r0, int c0) {
-            int length = R * C;
-            int[][] result = new int[length][2];
-            int i = 0;
-            int j = 1;
-            result[i++] = new int[]{r0, c0};
-            while (i < length) {
-                for (int x = 0; x <= j; x++) {
-                    int y = j - x;
-                    if (r0 + x < R && c0 + y < C) {
-                        result[i++] = new int[]{r0 + x, c0 + y};
-                    }
-                    if (r0 + x < R && c0 - y >= 0 && y != 0) {
-                        result[i++] = new int[]{r0 + x, c0 - y};
-                    }
-                    if (x != 0 && r0 - x >= 0 && c0 + y < C) {
-                        result[i++] = new int[]{r0 - x, c0 + y};
-                    }
-                    if (x != 0 && r0 - x >= 0 && c0 - y >= 0 && y != 0) {
-                        result[i++] = new int[]{r0 - x, c0 - y};
-                    }
+    public int[][] allCellsDistOrder2(int R, int C, int r0, int c0) {
+        int length = R * C;
+        int[][] result = new int[length][2];
+        int i = 0;
+        int j = 1;
+        result[i++] = new int[]{r0, c0};
+        while (i < length) {
+            for (int x = 0; x <= j; x++) {
+                int y = j - x;
+                if (r0 + x < R && c0 + y < C) {
+                    result[i++] = new int[]{r0 + x, c0 + y};
                 }
-                j++;
+                if (r0 + x < R && c0 - y >= 0 && y != 0) {
+                    result[i++] = new int[]{r0 + x, c0 - y};
+                }
+                if (x != 0 && r0 - x >= 0 && c0 + y < C) {
+                    result[i++] = new int[]{r0 - x, c0 + y};
+                }
+                if (x != 0 && r0 - x >= 0 && c0 - y >= 0 && y != 0) {
+                    result[i++] = new int[]{r0 - x, c0 - y};
+                }
             }
-
-            return result;
+            j++;
         }
+
+        return result;
     }
 
-    private static class Solution {
-        public int[][] allCellsDistOrder(int R, int C, int r0, int c0) {
-            int[][] result = new int[R * C][2];
-            int[] distinceArr = new int[R * C + 1];
-            Map<Integer, List<int[]>> distanceMap = new HashMap<>(201);
-            for (int i = 0; i < R; i++) {
-                for (int j = 0; j < C; j++) {
-                    int distance = this.calDistance(r0, c0, i, j);
-                    if (!distanceMap.containsKey(distance)) {
-                        distanceMap.put(distance, new LinkedList<>());
-                    }
-                    distanceMap.get(distance).add(new int[]{i, j});
-                    distinceArr[distance]++;
+    public int[][] allCellsDistOrder3(int R, int C, int r0, int c0) {
+        int[][] result = new int[R * C][2];
+        int[] distanceArr = new int[R * C + 1];
+        Map<Integer, List<int[]>> distanceMap = new HashMap<>(201);
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                int distance = this.calDistance(r0, c0, i, j);
+                if (!distanceMap.containsKey(distance)) {
+                    distanceMap.put(distance, new LinkedList<>());
+                }
+                distanceMap.get(distance).add(new int[]{i, j});
+                distanceArr[distance]++;
+            }
+        }
+        int i = 0;
+        for (int j = 0; j < distanceArr.length; j++) {
+            if (0 != distanceArr[j]) {
+                for (int[] cell : distanceMap.get(j)) {
+                    result[i++] = cell;
                 }
             }
-            int i = 0;
-            for (int j = 0; j < distinceArr.length; j++) {
-                if (0 != distinceArr[j]) {
-                    for (int[] cell : distanceMap.get(j)) {
-                        result[i++] = cell;
-                    }
-                }
-            }
-
-            return result;
         }
 
-        private int calDistance(int r0, int c0, int r1, int c1) {
-            int x = Math.abs(r0 - r1);
-            int y = Math.abs(c0 - c1);
-            return x + y;
-        }
+        return result;
     }
 
+    private int calDistance(int r0, int c0, int r1, int c1) {
+        int x = Math.abs(r0 - r1);
+        int y = Math.abs(c0 - c1);
+        return x + y;
+    }
 }
