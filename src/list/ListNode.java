@@ -1,4 +1,4 @@
-package list;
+package src.list;
 
 /**
  * List Node

@@ -1,4 +1,4 @@
-package test;
+package src.test;
 
 /**
  * 测试文件

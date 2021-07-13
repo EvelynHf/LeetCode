@@ -1,4 +1,4 @@
-package list;
+package src.list;
 
 /**
  * Reverse a singly linked list.

@@ -1,4 +1,4 @@
-package list;
+package src.list;
 
 /**
  * Design your implementation of the linked list. You can choose to use the singly linked list or the doubly linked list.
