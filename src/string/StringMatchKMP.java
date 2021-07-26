@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * KMP algorithm
+ * 字符串匹配
+ * 举例来说，有一个字符串"BBC ABCDAB ABCDABCDABDE"，里面是否包含另一个字符串"ABCDABD"？
+ * 思路：KMP算法
  *
  * @author EvelynHf
  * @Date 2021/07/21 10:32:00

@@ -4,7 +4,7 @@ package src.sort.binary;
  * 寻找有序数组中元素第一次出现和最后一次出现的索引
  * 思路：二分查找
  *
- * @author huangfen
+ * @author EvelynHf
  * @Date 2021/07/23 17:34:00
  */
 public class OrderlyArrSearch {
