@@ -1,4 +1,4 @@
-package src.tree;
+package src.binarytree;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -130,32 +130,6 @@ public class CountCompleteTreeNodes {
             point = point.left;
         }
         return treeHt;
-    }
-
-    public static class TreeNode implements Cloneable {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        public TreeNode() {
-        }
-
-        public TreeNode(int val) {
-            this.val = val;
-        }
-
-        @Override
-        protected TreeNode clone() {
-            TreeNode copy = new TreeNode();
-            copy.val = this.val;
-            if (null != this.left) {
-                copy.left = this.left.clone();
-            }
-            if (null != this.right) {
-                copy.right = this.right.clone();
-            }
-            return copy;
-        }
     }
 
     private TreeNode buildBigTree(int num) {
