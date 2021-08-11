@@ -1,6 +1,7 @@
 package src.binarytree;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -19,7 +20,7 @@ public class FlattenBinaryTreeToLinkedList {
         //        Integer[] arr = new Integer[] {0};
         TreeNode root = flattenBean.buildTree(arr);
         flattenBean.flatten(root);
-        flattenBean.preOrder(root);
+        TreeNodeUtil.printPreOrder(root);
     }
 
     public void flatten(TreeNode root) {
@@ -74,19 +75,5 @@ public class FlattenBinaryTreeToLinkedList {
             }
         }
         return root;
-    }
-
-    public void preOrder(TreeNode root) {
-        TreeNode node = root;
-        if (null == root) {
-            System.out.printf("null\t");
-        } else {
-            System.out.printf("%d\t", node.val);
-            if (null == root.left && null == root.right) {
-                return;
-            }
-            preOrder(root.left);
-            preOrder(root.right);
-        }
     }
 }

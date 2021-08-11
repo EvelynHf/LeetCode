@@ -13,27 +13,59 @@ public class UniqueBinarySearchTrees {
     public static void main(String[] args) {
         UniqueBinarySearchTrees uniqueBinarySearchTrees = new UniqueBinarySearchTrees();
         int result = uniqueBinarySearchTrees.numTrees(4);
+        //        int result = uniqueBinarySearchTrees.numTrees1(4);
         System.out.println(result);
     }
 
     /**
      * 思路：动态规划
+     * fn[0] = 1;
      * fn[1] = 1;
-     * fn[2] = fn[1] * 2;
-     * fn[3] = fn[1] * fn[1] + fn[2] * 2;
-     * fn[4] = fn[1] * fn[2] + fn[2] * fn[1] + fn[3] * 2;
+     * fn[2] = fn[0] * fn[1] + fn[1] * fn[0];
+     * fn[3] = fn[0] * fn[2] + fn[1] * fn[1] + fn[2] * fn[0];
+     * fn[4] = fn[0] * fn[3] + fn[1] * fn[2] + fn[2] * fn[1] + fn[3] * fn[0];
      */
     public int numTrees(int n) {
         int[] fn = new int[n + 1];
+        fn[0] = 1;
         fn[1] = 1;
-        for (int i = 2; i < n + 1; i++) {
+        for (int i = 1; i <= n; i++) {
             int count = 0;
-            for (int j = 1; j < i - 1; j++) {
-                count += fn[j] * fn[i - 1 - j];
+            for (int j = 1; j <= i; j++) {
+                int left = fn[j - 1];
+                int right = fn[i - j];
+                if (left == 0) {
+                    count += right;
+                } else if (right == 0) {
+                    count += left;
+                } else {
+                    count += left * right;
+                }
             }
-            count += fn[i - 1] * 2;
             fn[i] = count;
         }
         return fn[n];
+    }
+
+    /**
+     * 思路：递归
+     */
+    public int numTrees1(int n) {
+        if (0 == n || 1 == n) {
+            return n;
+        }
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            int left = numTrees1(i - 1);
+            int right = numTrees1(n - i);
+            if (left == 0) {
+                count += right;
+            }
+            if (right == 0) {
+                count += left;
+            }
+            count += left * right;
+        }
+        return count;
     }
 }
